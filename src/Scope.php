@@ -109,6 +109,10 @@ class Scope
      */
     public function toArray()
     {
+        if ($this->resourceManager->isRawData()) {
+            return $this->runAppropriateTransformer();
+        }
+
         $output = array(
             'data' => $this->runAppropriateTransformer()
         );

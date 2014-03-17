@@ -15,6 +15,8 @@ class Manager
 {
     protected $requestedScopes = array();
 
+    protected $rawData = false;
+
     public function getRequestedScopes()
     {
         return $this->requestedScopes;
@@ -24,6 +26,16 @@ class Manager
     {
         $this->requestedScopes = $this->parseNestedScopes($requestedScopes);
         return $this;
+    }
+
+    public function setRawData($rawData)
+    {
+        $this->rawData = $rawData;
+    }
+
+    public function isRawData()
+    {
+        return $this->rawData;
     }
 
     public function createData($resource, $scopeIdentifier = null, $parentScopeInstance = null)
